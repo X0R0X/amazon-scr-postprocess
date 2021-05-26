@@ -1,10 +1,8 @@
 const Apify = require('apify');
-const fetch = require('node-fetch');
 
 Apify.main(async () => {
-    const url = (await Apify.getInput())['datasetURL'];
-    // const url = 'https://api.apify.com/v2/datasets/u3Jqx075EvAQ5f0YB/items?clean=true&format=json';
-    const data = await (await fetch(url)).json();
+    const dataset = await Apify.openDataset('offers');
+    const data = (await dataset.getData())['items'];
 
     const processed = {}
     data.forEach(item => {
@@ -20,6 +18,6 @@ Apify.main(async () => {
         }
     });
 
-    const dataset = await Apify.openDataset('cheapestOffers');
-    await dataset.pushData(Object.values(processed));
+    const dataset2 = await Apify.openDataset('cheapestOffers');
+    await dataset2.pushData(Object.values(processed));
 });
