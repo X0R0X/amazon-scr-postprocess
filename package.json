@@ -1,0 +1,16 @@
+{
+  "name": "amazon-scr-postprocess",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apify": "^1.2.1",
+    "node-fetch": "^2.6.1"
+  }
+}
